@@ -87,7 +87,18 @@ const ohMy = () => {
     // YOUR CODE HERE
     axios.get('http://localhost:3000/animals')
     .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
+        let bodyHTML = document.querySelector('body');
+        // res.data.forEach((elem) => {
+        //     let newElement = document.createElement('p');
+        //     newElement.textContent = elem;
+        //     bodyHTML.appendChild(newElement);
+        // } )
+        for (let i = 0; i < res.data.length; i++) {
+            let newElement = document.createElement('p');
+            newElement.textContent = res.data[i];
+            bodyHTML.appendChild(newElement);
+        }
     })
     .catch(error => {
         console.log(error)
@@ -112,7 +123,7 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     //YOUR CODE HERE   
-    axios.get(`http://localhost:3000/repeat/monkey`)
+    axios.get(`http://localhost:3000/repeat/ghettoboujee`)
     .then(res => {
        let repeatElement = document.querySelector('#repeat-text')
        repeatElement.style.display = 'block';
@@ -147,7 +158,7 @@ document.querySelector('#repeat-button').addEventListener('click', repeatMyParam
 // CODE HERE
 
 const getRequest = () => {
-    axios.get('http://localhost:3000/query-test/?name=ghetto')
+    axios.get('http://localhost:3000/query-test/?name=ghettoboujee')
     .then(response => {
         console.log(response)
     })
